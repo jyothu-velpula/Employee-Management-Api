@@ -50,7 +50,8 @@ function EmployeeList() {
       setDepartment("");
 
     } catch (error) {
-      console.error("Add Error:", error);
+      console.log(error)
+      // console.error("Add Error:", error);
     }
   };
 
