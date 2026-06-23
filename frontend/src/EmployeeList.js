@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_URL =
+const API_URL = process.env.REACT_APP_API_URL || 
   "https://musical-bassoon-7qq965g6pvx2wqg9-5000.app.github.dev";
 
 function EmployeeList() {
