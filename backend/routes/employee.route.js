@@ -6,5 +6,4 @@ router.post('/employees',CreateEmployee)
 router.get('/All/employees',GetEmployee)
 router.post('/Delete/employees/:id',DeleteEmployee)
 
-
 module.exports = router;
