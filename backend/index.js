@@ -56,8 +56,10 @@
 
 const express = require("express");
 const cors = require("cors");
-const db = require("./config/db");
+const sequelize = require("./config/db");
+const Employee = require('./models/employee.model')
 const employeeData = require('./routes/employee.route')
+
 
 const app = express();
 
@@ -88,13 +90,13 @@ app.use("/",employeeData)
 //     })
 // });
 
-app.get("/employees", async (req, res) => {
+// app.get("/employees", async (req, res) => {
 
-    const data = await db.employees.findAll();
+//     const data = await db.employees.findAll();
 
-    res.json(data);
+//     res.json(data);
 
-});
+// });
 
 // app.post("/employees", (req, res) => {
 
@@ -117,24 +119,39 @@ app.get("/employees", async (req, res) => {
 //   );
 // });
 
-app.delete("/employees/:id", (req, res) => {
+// app.delete("/employees/:id", (req, res) => {
 
-  db.run(
-    "DELETE FROM employees WHERE id=?",
-    [req.params.id],
-    function(err) {
+//   db.run(
+//     "DELETE FROM employees WHERE id=?",
+//     [req.params.id],
+//     function(err) {
 
-      if (err) {
-        return res.status(500).json(err);
-      }
+//       if (err) {
+//         return res.status(500).json(err);
+//       }
 
-      res.json({
-        message: "Deleted"
-      });
-    }
-  );
-});
+//       res.json({
+//         message: "Deleted"
+//       });
+//     }
+//   );
+// });
 
-app.listen(5000, () => {
-  console.log("Server Started");
-});
+// app.listen(5000, () => {
+//   console.log("Server Started");
+// });
+
+
+sequelize.sync({ force: true })
+  .then(() => {
+
+    console.log("Database Synced");
+
+    app.listen(5000, () => {
+      console.log("Server Started");
+    });
+
+  })
+  .catch(err => {
+    console.log(err);
+  });

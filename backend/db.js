@@ -8,6 +8,8 @@ db.serialize(() => {
       id INTEGER PRIMARY KEY,
       name TEXT,
       department TEXT
+      isActive INTEGER
+      isDeleted INTEGER
     )
   `);
 });

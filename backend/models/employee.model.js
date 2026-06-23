@@ -18,19 +18,15 @@ const Employee = sequelize.define("Employee", {
     allowNull: false
   },
 
-  // isActive: {
-  //   type: DataTypes.INTEGER,
-  //   defaultValue: 1
-  // },
+  isActive: {
+    type: DataTypes.INTEGER,
+    defaultValue: 1
+  },
 
-  // isDeleted: {
-  //   type: DataTypes.INTEGER,
-  //   defaultValue: 0
-  // }
-
-}, {
-  timestamps: false
-}
-);
+  isDeleted: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0
+  }
+});
 
 module.exports = Employee;
